@@ -49,9 +49,6 @@ class Task1499_2 {
     }
 
     public int findMaxValueOfEquation(int[][] points, int k) {
-        for (int i = 0; i < points.length; i++) {
-            points[i][0] += 100_000_000;
-        }
         var maxIndex = 0;
         var max = 0;
         var answer = Integer.MIN_VALUE;
