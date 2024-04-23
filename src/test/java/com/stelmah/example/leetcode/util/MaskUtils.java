@@ -1,6 +1,6 @@
-package com.stelmah.example.leetcode;
+package com.stelmah.example.leetcode.util;
 
-public class MaskUtil {
+public class MaskUtils {
 
     public static String maskToString(int mask, int size) {
         var sb = new StringBuilder();
