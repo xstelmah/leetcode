@@ -14,21 +14,21 @@ class Task2385 {
         Assertions.assertEquals(4, amountOfTime(root, start));
     }
 
+    public static Integer[] EMPTY = new Integer[]{0, null, 0};
+
     public int amountOfTime(TreeNode root, int start) {
         return dfs(root, start)[2];
     }
 
     public Integer[] dfs(TreeNode node, int start) {
-        if (node == null) {
-            return new Integer[]{0, null, 0};
-        }
-        var left = dfs(node.left, start);
-        var right = dfs(node.right, start);
+
+        var left = node.left == null ? EMPTY : dfs(node.left, start);
+        var right = node.right == null ? EMPTY : dfs(node.right, start);
 
 
-        var max = Math.max(left[0], right[0]) + 1;
+        var height = Math.max(left[0], right[0]) + 1;
         if (node.val == start) {
-            return new Integer[]{max, max, max - 1};
+            return new Integer[]{height, height, height - 1};
         }
 
         if (left[1] != null || right[1] != null) {
@@ -43,7 +43,7 @@ class Task2385 {
             return new Integer[]{infected[0] + 1, infected[1], Math.max(infected[2], tempAnswer)};
 
         } else {
-            return new Integer[]{max, null, 0};
+            return new Integer[]{height, null, 0};
         }
 
     }
