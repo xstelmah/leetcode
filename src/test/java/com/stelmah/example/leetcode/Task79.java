@@ -17,6 +17,20 @@ class Task79 {
 
     public boolean exist(char[][] board, String word) {
         var chars = word.toCharArray();
+
+        // optimization
+        var board1d = new int[128];
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                board1d[board[y][x]]++;
+            }
+        }
+        for (var chr: chars) {
+            if (board1d[chr]-- <= 0) {
+                return false;
+            }
+        }
+
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
                 if (board[y][x] == chars[0]) {
